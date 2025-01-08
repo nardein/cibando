@@ -23,4 +23,24 @@
     <h1>App di esempio</h1>
   </div>  -->
 </header>
+
+<ngb-carousel>
+  <ng-template ngbSlide *ngFor="let image of images; let i=index">
+    <div class="picsum-img-wrapper">
+      <img [src]="path + image.id + '.jpg'" alt="[image.label]" />
+    </div>
+    <div class="carousel-caption">
+      <h3>{{image.label}}</h3>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<!--
+<div *ngIf="allieviCompleta.length">
+  <div *ngFor="let allievo of allieviCompleta">
+    <strong>{{allievo.nome}}</strong>
+  </div>
+</div>
+
+<h3 *ngIf="!allieviCompleta.length">NON CI SONO ALLIEVI</h3> -->
+
 <router-outlet />
