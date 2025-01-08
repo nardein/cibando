@@ -1,46 +1,58 @@
 <header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-red">
-    <img src="../assets/images/icona-cibando.png" class="logo-cibando">
+    <img src="../assets/images/icona-cibando.png" class="logo-cibando" />
     <a class="navbar-brand" href="#">Cibando</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#"> <i class="pi pi-home" style="font-size: 1rem"></i> Home</a>
+          <a class="nav-link" href="#">
+            <i class="pi pi-home" style="font-size: 1rem"></i> Home</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"> <i class="pi pi-book" style="font-size: 1rem"></i> Ricette</a>
+          <a class="nav-link" href="#">
+            <i class="pi pi-book" style="font-size: 1rem"></i> Ricette</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"> <i class="pi pi-envelope" style="font-size: 1rem"></i> Contatti</a>
+          <a class="nav-link" href="#">
+            <i class="pi pi-envelope" style="font-size: 1rem"></i> Contatti</a
+          >
         </li>
       </ul>
     </div>
   </nav>
- <!-- <div class="container-title">
-    <h1>App di esempio</h1>
-  </div>  -->
 </header>
 
-<ngb-carousel>
-  <ng-template ngbSlide *ngFor="let image of images; let i=index">
+<ngb-carousel *ngIf="images.length>1">
+  <ng-template ngbSlide *ngFor="let image of images; let i = index">
     <div class="picsum-img-wrapper">
       <img [src]="path + image.id + '.jpg'" alt="[image.label]" />
     </div>
     <div class="carousel-caption">
-      <h3>{{image.label}}</h3>
+      <h3>{{ image.label }}</h3>
+      <span *ngIf="images.length === i + 1"> Ultima foto </span>
     </div>
   </ng-template>
 </ngb-carousel>
-<!--
-<div *ngIf="allieviCompleta.length">
-  <div *ngFor="let allievo of allieviCompleta">
-    <strong>{{allievo.nome}}</strong>
+
+<div *ngIf="images.length === 1">
+  <div class="image-no-carousel" [style]="'background: url(' + path + images[0].id + '.jpg); background-repeat: no-repeat; background-position: center; background-size: cover;'">
+  </div>
+  <div class="carousel-caption-no-carousel">
+    <h3>{{images[0].label}}</h3>
   </div>
 </div>
-
-<h3 *ngIf="!allieviCompleta.length">NON CI SONO ALLIEVI</h3> -->
 
 <router-outlet />
