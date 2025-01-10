@@ -1,6 +1,6 @@
 import { Recipe } from "../models/recipes.model";
 
-export  const RECIPES: Recipe [] =
+export const RECIPES: Recipe [] =
 [
   {
     _id: 1,
