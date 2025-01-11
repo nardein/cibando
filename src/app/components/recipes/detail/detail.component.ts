@@ -1,5 +1,5 @@
 import { RecipeService } from './../../../services/recipe.service';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Recipe } from '../../../models/recipes.model';
 
@@ -9,12 +9,19 @@ import { Recipe } from '../../../models/recipes.model';
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss',
 })
-export class DetailComponent {
+
+
+export class DetailComponent implements OnInit {
+
   private RecipeService = inject(RecipeService);
   private activatedRoute = inject(ActivatedRoute);
   private router = inject(Router);
 
   ricetta: Recipe | undefined;
+
+  ngOnInit(): void {
+    this.onGetDetail();
+  }
 
   onGetDetail() {
     const id = Number(this.activatedRoute.snapshot.paramMap.get('_id'));
@@ -26,5 +33,15 @@ export class DetailComponent {
         error: e => console.log(e)
       })
     }
+  }
+
+  onGetDetail2():void{
+    this.activatedRoute.params.subscribe((urlParams) => {
+      const id = urlParams['_id'];
+      const idNumerico = Number(id);
+      if(idNumerico){
+        this.RecipeService.getDetail(idNumerico).subscribe(res => this.ricetta = res);
+      }
+    })
   }
 }
