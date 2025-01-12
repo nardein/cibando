@@ -10,3 +10,12 @@ $secondary-color-2: rgb(170,170,170);
 //Scala di Grigi
 $gray-1: rgb(170,170,170);
 //Button
+
+.btn-primary:hover{
+  background-color: $primary-color-1;
+}
+
+.btn-primary{
+  background-color: $primary-color-1;
+  border-color: cornsilk;
+}

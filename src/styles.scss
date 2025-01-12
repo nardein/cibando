@@ -14,12 +14,3 @@ body{
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
-
-.btn-primary:hover{
-  background-color: $primary-color-1;
-}
-
-.btn-primary{
-  background-color: $primary-color-1;
-  border-color: cornsilk;
-}
