@@ -8,6 +8,11 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { DatePipe } from '@angular/common';
+import { LOCALE_ID } from '@angular/core';
+import localeIt from '@angular/common/locales/it';  // Importa la localizzazione italiana
+import { registerLocaleData } from '@angular/common';
+
 //pagine
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HomeComponent } from './components/home/home.component';
@@ -15,6 +20,8 @@ import { RecipesComponent } from './components/recipes/recipes.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { RecipeCardComponent } from './components/shared/recipe-card/recipe-card.component';
 import { DetailComponent } from './components/recipes/detail/detail.component';
+import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
+registerLocaleData(localeIt, 'it');
 
 @NgModule({
   declarations: [
@@ -24,7 +31,8 @@ import { DetailComponent } from './components/recipes/detail/detail.component';
     RecipesComponent,
     HeaderComponent,
     RecipeCardComponent,
-    DetailComponent
+    DetailComponent,
+    RecipesListComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,10 @@ import { DetailComponent } from './components/recipes/detail/detail.component';
     NgbModule,
     NgbCollapseModule
   ],
-  providers: [],
+  providers: [
+    { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

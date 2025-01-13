@@ -12,14 +12,5 @@ import { Recipe } from '../../models/recipes.model';
 })
 
 export class RecipesComponent {
-  ricette: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService){
-    this.recipeService.getRecipes().subscribe({
-      next:(res) => {    //se la risposta è positiva fai questo
-        this.ricette = res;
-      },
-      error: (e)  => console.error(e)
-    });
-  }
 }
