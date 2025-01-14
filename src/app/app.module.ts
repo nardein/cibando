@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //Librerie
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { RecipeCardComponent } from './components/shared/recipe-card/recipe-card.component';
 import { DetailComponent } from './components/recipes/detail/detail.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
+import { RegistrationComponent } from './components/user/registration/registration.component';
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
@@ -32,14 +34,17 @@ registerLocaleData(localeIt, 'it');
     HeaderComponent,
     RecipeCardComponent,
     DetailComponent,
-    RecipesListComponent
+    RecipesListComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     NgbModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano
