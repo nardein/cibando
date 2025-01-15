@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -11,12 +12,12 @@ import { UserService } from '../../../services/user.service';
 
 export class RegistrationComponent {
 
+  private router = inject(Router);
+  private userService = inject(UserService);
+
   regexExp = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$/;
   passwordValid = false;
 
-  constructor(private userService: UserService){
-
-  }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -29,7 +30,8 @@ export class RegistrationComponent {
   onSubmit(){
     console.log(this.form.value)
     const dati = {name: this.form.controls.name.value, email: this.form.controls.email.value}
-    this.userService.datiUtente.next(dati)
+    this.userService.datiUtente.next(dati);
+    this.router.navigateByUrl('home');
   }
 
 

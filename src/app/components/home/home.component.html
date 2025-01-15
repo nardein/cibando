@@ -8,9 +8,9 @@
 
 <h2>Ultime ricette</h2>
 <app-recipe-card [recipes]="ricette"></app-recipe-card>
-
+<!--
 <button (click)="openModal(modaleUno, '4345', 'Leonardo')">Elimina Prodotto</button>
-<button (click)="openModal(modaleDue)">Registrazione</button>
+<button (click)="openModal(modaleRegistrazione)">Registrazione</button> -->
 
 <!--MODALE UNO-->
 <ng-template #modaleUno let-modal>
@@ -28,13 +28,17 @@
 </ng-template>
 
 <!--MODALE DUE-->
-<ng-template #modaleDue let-modal>
+<ng-template #modaleRegistrazione let-modal>
 	<div class="modal-header">
-		<h4 class="modal-title">Registrazione con successo</h4>
+		<h4 class="modal-title">Grazie per esserti registrato!</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
 	</div>
 	<div class="modal-body">
-		<p>One fine body&hellip;</p>
+    <h3> Ecco i tuoi dati: </h3>
+    <ul>
+      <li>Nome: {{this.datiRegistrazione['name']}} </li>
+      <li>Email: {{this.datiRegistrazione['email']}} </li> <!--trucchetto per non avere errore chiamandalo come fosse un array-->
+    </ul>
 	</div>
 	<div class="modal-footer">
 		<button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Chiudi</button>
