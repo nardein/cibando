@@ -107,8 +107,8 @@
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4c" class="form-control" name="password" formControlName="password"/>
-                        <label class="form-label" for="form3Example4c">Password</label>
+                        <label class="form-label" for="form3Example4c"> Password </label>
+                        <p-password formControlName="password" [toggleMask]="true" strongRegex="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$"/>
                         <p class="is-danger" *ngIf="!form.get('password')?.valid && form.get('password')?.touched">
                           La password è obbligatoria
                         </p>
@@ -120,7 +120,7 @@
 
                     <div class="d-flex flex-row align-items-center mb-4">
                       <div data-mdb-input-init class="form-outline flex-fill mb-0">
-                        <input type="password" id="form3Example4cd" class="form-control" name="ripetiPassword" formControlName="ripetiPassword" (ngModelChange)="checkPassword()"/>
+                        <input type="password" id="form3Example4cd" class="form-control" name="ripetiPassword" formControlName="ripetiPassword" (ngModelChange)="checkPassword($event)"/>
                         <label class="form-label" for="form3Example4cd">Conferma password</label>
                         <p class="is-danger" *ngIf="!form.get('confermaPassword')?.valid && form.get('confermaPassword')?.touched">
                           Il campo conferma password è obbligatorio
@@ -131,7 +131,7 @@
                     <div class="form-check d-flex justify-content-center mb-5">
                       <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" name="accetto" formControlName="accetto" />
                       <label class="form-check-label" for="form2Example3">
-                        I agree all statements in <a href="#!">Terms of service</a>
+                        Dichiaro di accettare i <a href="#!">Termini di servizio</a>
                       </label>
                       <p class="is-danger" *ngIf="!form.get('accetto')?.valid && form.get('accetto')?.touched">
                         Il campo Accetto è obbligatorio
@@ -140,7 +140,7 @@
 
 
                     <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                      <button [disabled]="!form.valid" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Registrati</button>
+                      <button [disabled]="checkForm()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Registrati</button>
                     </div>
 
                   </form>

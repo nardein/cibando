@@ -8,7 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
 import { DatePipe } from '@angular/common';
 import { LOCALE_ID } from '@angular/core';
 import localeIt from '@angular/common/locales/it';  // Importa la localizzazione italiana
@@ -44,7 +45,9 @@ registerLocaleData(localeIt, 'it');
     NgbModule,
     NgbCollapseModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PasswordModule,
+    DividerModule,
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano
