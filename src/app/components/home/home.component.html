@@ -8,3 +8,35 @@
 
 <h2>Ultime ricette</h2>
 <app-recipe-card [recipes]="ricette"></app-recipe-card>
+
+<button (click)="openModal(modaleUno, '4345', 'Leonardo')">Elimina Prodotto</button>
+<button (click)="openModal(modaleDue)">Registrazione</button>
+
+<!--MODALE UNO-->
+<ng-template #modaleUno let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Elimina Prodotto</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>Sei sicuro di voler eliminare questo prodotto num{{this.idModale}} <strong>{{this.nomeModale}}</strong>?</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" (click)="modal.dismiss()" ngbAutoFocus>Annulla</button>
+    <button type="button" class="btn btn-primary" (click)="modal.close()">ELIMINA</button>
+	</div>
+</ng-template>
+
+<!--MODALE DUE-->
+<ng-template #modaleDue let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title">Registrazione con successo</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<p>One fine body&hellip;</p>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Chiudi</button>
+	</div>
+</ng-template>

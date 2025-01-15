@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-registration',
   standalone: false,
-
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.scss'
 })
@@ -12,6 +12,11 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class RegistrationComponent {
 
   regexExp = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){6,16}$/;
+  passwordValid = false;
+
+  constructor(private userService: UserService){
+
+  }
 
   form = new FormGroup({
     name: new FormControl('', [Validators.required]),
@@ -23,9 +28,10 @@ export class RegistrationComponent {
 
   onSubmit(){
     console.log(this.form.value)
+    const dati = {name: this.form.controls.name.value, email: this.form.controls.email.value}
+    this.userService.datiUtente.next(dati)
   }
 
-  passwordValid = false;
 
   checkPassword(e){
     if(e === this.form.controls.password.value){
