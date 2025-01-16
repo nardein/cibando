@@ -1,5 +1,5 @@
+import { Recipe } from './../../../models/recipes.model';
 import { Component,Input,Output, EventEmitter } from '@angular/core';
-import { Recipe } from '../../../models/recipes.model';
 @Component({
   selector: 'app-recipe-card',
   standalone: false,
@@ -9,11 +9,15 @@ import { Recipe } from '../../../models/recipes.model';
 })
 
 export class RecipeCardComponent {
-  @Input() recipes: Recipe[] | undefined;
+  @Input() recipe: Recipe | undefined;
+  @Input() page:string='';
   @Output() messaggio = new EventEmitter();
 
   inviaTitolo(titolo: string){
     this.messaggio.emit(titolo);
   }
+
+
+
 
 }
