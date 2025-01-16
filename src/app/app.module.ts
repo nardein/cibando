@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
+import { PaginatorModule } from 'primeng/paginator';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { DatePipe } from '@angular/common';
@@ -24,6 +25,7 @@ import { RecipeCardComponent } from './components/shared/recipe-card/recipe-card
 import { DetailComponent } from './components/recipes/detail/detail.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { ContattiComponent } from './components/contatti/contatti.component';
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
@@ -36,7 +38,8 @@ registerLocaleData(localeIt, 'it');
     RecipeCardComponent,
     DetailComponent,
     RecipesListComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ContattiComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ registerLocaleData(localeIt, 'it');
     ReactiveFormsModule,
     PasswordModule,
     DividerModule,
+    PaginatorModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano

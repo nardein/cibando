@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements AfterViewInit {
+
   evindenziato = false;
   ricette: Recipe[] = [];
   datiRegistrazione = {};

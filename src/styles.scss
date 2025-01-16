@@ -21,3 +21,10 @@ body{
   top: -10px;
 }
 
+#container-cards {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-content: center;
+	gap: 50px;
+}

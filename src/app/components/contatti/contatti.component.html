@@ -1,0 +1,18 @@
+<div class="container-form">
+  <div class="inside-container">
+    <form class="form" [formGroup]="contactForm">
+      <input type="text" formControlName="name">
+      <label class="nameLabel">Nome</label>
+
+      <input type="email" formControlName="email">
+      <label class="emailLabel">Email</label>
+
+      <input type="text" formControlName="oggetto">
+      <label class="oggettoLabel">oggetto</label>
+
+      <input type="text" formControlName="messaggio">
+      <label class="messaggioLabel">messaggio</label>
+      <button [disabled]="checkForm()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Invia</button>
+    </form>
+  </div>
+</div>

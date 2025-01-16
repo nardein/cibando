@@ -1,0 +1,18 @@
+.container-form {
+  border: 2px solid red;
+  border-radius: 16px;
+  height: 400px;
+  width: 800px;
+  background-color: #b8e662;
+
+  .inside-container{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100px;
+  }
+}
+
+
+
+
