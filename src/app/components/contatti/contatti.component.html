@@ -1,18 +1,70 @@
-<div class="container-form">
-  <div class="inside-container">
-    <form class="form" [formGroup]="contactForm">
-      <label class="nameLabel">Nome</label>
-      <input type="text" formControlName="name">
+<!-- Parent Container -->
+<div class="container min-vh-100">
+  <div class="row justify-content-center align-items-center min-vh-100">
+    <div class="col-sm-12 col-md-8 col-lg-6 d-flex justify-content-center">
 
-      <label class="emailLabel">Email</label>
-      <input type="email" formControlName="email">
+      <!-- Background Card & Form -->
+      <div id="background" class="p-lg-2 rounded shadow bg-opacity-10 " style="height: 500px; width: 800px;">
+        <form (ngSubmit)="onSubmit()" [formGroup]="contactForm"
+          class="h-100 d-flex flex-column justify-content-center position-relative">
+          <h1 id="titleCard" class="position-absolute top-0 start-0 m-3 fw-bolder text-black">Contatti</h1>
 
-      <label class="oggettoLabel">oggetto</label>
-      <input type="text" formControlName="oggetto">
+          <!-- Nome Field -->
+          <div class="row mb-3 align-items-center">
+            <div class="col-4 text-end">
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="col-6">
+                <input type="text" pInputText name="nome" id="nome" formControlName="nome" placeholder="Nome" />
+              </div>
+            </div>
+          </div>
 
-      <label class="messaggioLabel">messaggio</label>
-      <input type="text" formControlName="messaggio">
-      <button [disabled]="checkForm()" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Invia</button>
-    </form>
+          <!-- Email Field -->
+          <div class="row mb-3 align-items-center">
+            <div class="col-4 text-end">
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="col-6">
+                <input type="email" pInputText name="email" id="email" formControlName="email" placeholder="email" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Oggetto Field -->
+          <div class="row mb-3 align-items-center">
+            <div class="col-4 text-end">
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="col-6">
+                <input type="text" pInputText name="oggetto" id="oggetto" formControlName="oggetto"
+                  placeholder="oggetto" />
+              </div>
+            </div>
+          </div>
+
+          <!-- Messaggio Field -->
+          <div class="row mb-3 align-items-center">
+            <div class="col-4 text-end">
+            </div>
+            <div class="d-flex justify-content-center">
+              <div class="col-6">
+                <textarea rows="5" cols="30" pInputTextarea formControlName="messaggio" placeholder="Messaggio">
+                </textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="row">
+            <div class="col text-center">
+              <button [disabled]="!contactForm.valid" type="submit" class="btn btn-primary btn-lg" (click)="onSubmit()">
+                Invia
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>

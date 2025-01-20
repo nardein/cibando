@@ -1,22 +1,22 @@
 // Colori principali
 $primary-color-1: #8e210b;
 $primary-color-2: white;
-$primary-color-3: #ba8474;
-
+$primary-color-3: #ffcec4;
+$primary-color-4: #631608;
 
 // Colori Secondari
 $secondary-color-1: #481005;
-$secondary-color-2: rgb(170,170,170);
+$secondary-color-2: rgb(170, 170, 170);
 
 //Scala di Grigi
-$gray-1: rgb(170,170,170);
+$gray-1: rgb(170, 170, 170);
 //Button
 
-.btn-primary:hover{
+.btn-primary:hover {
   background-color: $primary-color-1;
 }
 
-.btn-primary{
+.btn-primary {
   background-color: $primary-color-1;
   border-color: cornsilk;
 }
