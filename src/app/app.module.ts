@@ -4,7 +4,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
-//Librerie
+//Moduli
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -12,6 +12,9 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { PaginatorModule } from 'primeng/paginator';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
+import { RatingModule } from 'primeng/rating';
+import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DatePipe } from '@angular/common';
 import { LOCALE_ID } from '@angular/core';
 import localeIt from '@angular/common/locales/it';  // Importa la localizzazione italiana
@@ -27,6 +30,7 @@ import { DetailComponent } from './components/recipes/detail/detail.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
+import { NuovaricettaComponent } from './components/recipes/nuovaricetta/nuovaricetta.component';
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
@@ -40,7 +44,8 @@ registerLocaleData(localeIt, 'it');
     DetailComponent,
     RecipesListComponent,
     RegistrationComponent,
-    ContattiComponent
+    ContattiComponent,
+    NuovaricettaComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +58,10 @@ registerLocaleData(localeIt, 'it');
     PasswordModule,
     DividerModule,
     PaginatorModule,
-    HttpClientModule
+    HttpClientModule,
+    RatingModule,
+    InputTextModule,
+    InputTextareaModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano

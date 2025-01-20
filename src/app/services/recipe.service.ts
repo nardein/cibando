@@ -9,9 +9,12 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class RecipeService {
-  apiBaseUrl = 'api/recipes'
-  constructor(private http: HttpClient) {
 
+  apiBaseUrl = 'api/recipes'
+
+  recipe:Recipe;
+
+  constructor(private http: HttpClient) {
    }
 
   getRecipes():Observable<Recipe[]>{
@@ -23,5 +26,9 @@ export class RecipeService {
     // const recipe = RECIPES.find(ricetta => ricetta._id === id);
     // return of (recipe);
     return this.http.get<Recipe>(`${this.apiBaseUrl}/${id}`)
+  }
+
+  addRecipes(recipe): Observable<Recipe | undefined >{
+    return this.http.post<Recipe>(`${this.apiBaseUrl}/`,recipe)
   }
 }
