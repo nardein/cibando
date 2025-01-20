@@ -1,16 +1,19 @@
 .container-form {
   border: 2px solid red;
-  border-radius: 16px;
+  background-color: #b8e662;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+.inside-container{
+  display: flex;
+  flex-direction: column;
   height: 400px;
   width: 800px;
-  background-color: #b8e662;
-
-  .inside-container{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    height: 100px;
-  }
+  border: 2px solid red;
+ }
 }
 
 
