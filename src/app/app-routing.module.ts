@@ -9,6 +9,7 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { NuovaricettaComponent } from './components/recipes/nuovaricetta/nuovaricetta.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 const routes: Routes = [
   {path:'',redirectTo: 'home',pathMatch: 'full'}, //pathMatch controlla tutta la stringa dell'url e funziona sempre
@@ -19,6 +20,7 @@ const routes: Routes = [
     {path: '', component: RecipesListComponent, pathMatch: 'full'}
   ]},
   {path: 'registrazione', component: RegistrationComponent},
+  {path: 'login', component:LoginComponent},
   {path: 'contatti', component: ContattiComponent},
   {path: 'nuovaricetta', component:NuovaricettaComponent},
   {path: '**', redirectTo: 'home'} // se l'url è sbagliato riporta alla home

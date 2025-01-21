@@ -1,0 +1,32 @@
+<div id="container-login">
+  <form #form="ngForm">
+    <div>
+      <p-floatLabel>
+        <input  pInputText id="username" ngModel name="email">
+        <label for="username">Username/email</label>
+      </p-floatLabel>
+    </div>
+
+    <div>
+      <p-floatLabel>
+        <p-password  pInputText id="password" ngModel name="password"  [toggleMask]="true"/>
+        <label for="password">Password</label>
+      </p-floatLabel>
+    </div>
+
+
+    <div>
+      <p-floatLabel>
+        <p-button  label="accedi" icon="pi pi-check" iconPos="right" (onClick)="onSubmit(form.value)"/>
+      </p-floatLabel>
+    </div>
+  </form>
+
+  <div id="error-message" *ngIf="errorMessage.length">
+    {{errorMessage}}
+  </div>
+
+  <div id="registrati">
+     <a routerLink="/registrazione">Se non sei ancora registrato, clicca qui per registrarti</a> <!--// lo slash percorso assoluto -->
+  </div>
+</div>

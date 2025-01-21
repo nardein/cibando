@@ -15,12 +15,13 @@ import { DividerModule } from 'primeng/divider';
 import { RatingModule } from 'primeng/rating';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { FloatLabelModule } from 'primeng/floatlabel';
 import { DatePipe } from '@angular/common';
 import { LOCALE_ID } from '@angular/core';
 import localeIt from '@angular/common/locales/it';  // Importa la localizzazione italiana
 import { registerLocaleData } from '@angular/common';
-
-//pagine
+import { ButtonModule } from 'primeng/button';
+// pagine
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HomeComponent } from './components/home/home.component';
 import { RecipesComponent } from './components/recipes/recipes.component';
@@ -31,6 +32,8 @@ import { RecipesListComponent } from './components/recipes/recipes-list/recipes-
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { NuovaricettaComponent } from './components/recipes/nuovaricetta/nuovaricetta.component';
+import { LoginComponent } from './components/user/login/login.component';
+
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
@@ -45,7 +48,8 @@ registerLocaleData(localeIt, 'it');
     RecipesListComponent,
     RegistrationComponent,
     ContattiComponent,
-    NuovaricettaComponent
+    NuovaricettaComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,9 @@ registerLocaleData(localeIt, 'it');
     HttpClientModule,
     RatingModule,
     InputTextModule,
-    InputTextareaModule
+    InputTextareaModule,
+    FloatLabelModule,
+    ButtonModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano

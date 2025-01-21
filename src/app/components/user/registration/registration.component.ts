@@ -27,13 +27,6 @@ export class RegistrationComponent {
     accetto: new FormControl(false, [Validators.requiredTrue])
   })
 
-  onSubmit(){
-    console.log(this.form.value)
-    const dati = {name: this.form.controls.name.value, email: this.form.controls.email.value}
-    this.userService.datiUtente.next(dati);
-    this.router.navigateByUrl('home');
-  }
-
 
   checkPassword(e){
     if(e === this.form.controls.password.value){
@@ -49,6 +42,21 @@ export class RegistrationComponent {
     } else{
       return true
     }
+  }
+
+  onSubmit(){
+    console.log(this.form.value)
+    const dati = {name: this.form.controls.name.value, email: this.form.controls.email.value}
+    this.userService.datiUtente.next(dati);
+    this.userService.saveUsers(this.form.value).subscribe({
+      next:(response) => {
+        console.log("utente aggiunto",response),
+        this.router.navigateByUrl('home');
+      },
+      error:(e) => {
+        console.error("Utent non aggiunto",e);
+      }
+    })
   }
 
 }

@@ -1,14 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RecipeService } from '../../../services/recipe.service';
 import { Recipe } from '../../../models/recipes.model';
-
-
-interface PageEvent {
-  first: number;
-  rows: number;
-  page: number;
-  pageCount: number;
-}
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipes-list',
@@ -19,8 +12,8 @@ interface PageEvent {
 })
 
 export class RecipesListComponent {
+  recipeService = inject(RecipeService);
   ricette: Recipe[] = [];
-
   titoloRicevuto: any;
 
   first: number = 0;
@@ -28,10 +21,19 @@ export class RecipesListComponent {
   page = 1;
   size = 4;
 
+  recipes$ = this.recipeService.getRecipes().pipe(
+    map(res => res.filter(ricetteFiltrate => ricetteFiltrate.difficulty < 3)), //il map prende la response e la trasforma "mappa" in quello che chiedo. In questo caso la filtra pure
+    map(response => this.totaleRicette = response)
+  )
+  totaleRicette: Recipe[]  // --BestPractice-- $ usato per dire che la variabile è per una chiamata asincrona
 
 
+  constructor(){
+  //  this.getRecipes();
+  }
 
-  constructor(private recipeService: RecipeService){
+
+  getRecipes(){
     this.recipeService.getRecipes().subscribe({
       next:(res) => {    //se la risposta è positiva fai questo
         this.ricette = res;
@@ -39,7 +41,6 @@ export class RecipesListComponent {
       error: (e)  => console.error(e)
     });
   }
-
 
   riceviTitolo(event: any){
     this.titoloRicevuto=event;

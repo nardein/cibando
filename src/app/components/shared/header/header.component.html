@@ -47,13 +47,16 @@
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            <i class="pi pi-envelope" style="font-size: 1rem" routerLink="registrazione"></i> Registrazione </a
-          >
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">
             <i class="pi pi-envelope" style="font-size: 1rem" routerLink="nuovaricetta"></i> Nuova Ricetta </a
           >
+        </li>
+        <li class="nav-item" *ngIf="!authService.isLogged()">
+          <a class="nav-link">
+            <i class="pi pi-user" style="font-size: 1rem" routerLink="login"></i> Accedi/Registrati </a
+          >
+        </li>
+        <li class="nav-item" *ngIf="authService.isLogged()">
+            <i class="pi pi-user" style="font-size: 1rem">Ciao {{user?.name}} -PROFILO  <strong (click)="logout()"> - ESCI</strong> </i>
         </li>
 
       </ul>
