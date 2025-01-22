@@ -21,6 +21,7 @@ import { LOCALE_ID } from '@angular/core';
 import localeIt from '@angular/common/locales/it';  // Importa la localizzazione italiana
 import { registerLocaleData } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { EditorModule } from 'primeng/editor';
 // pagine
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HomeComponent } from './components/home/home.component';
@@ -33,6 +34,7 @@ import { RegistrationComponent } from './components/user/registration/registrati
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { NuovaricettaComponent } from './components/recipes/nuovaricetta/nuovaricetta.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { ProfileComponent } from './components/user/profile/profile.component';
 
 registerLocaleData(localeIt, 'it');
 
@@ -49,7 +51,8 @@ registerLocaleData(localeIt, 'it');
     RegistrationComponent,
     ContattiComponent,
     NuovaricettaComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +70,8 @@ registerLocaleData(localeIt, 'it');
     InputTextModule,
     InputTextareaModule,
     FloatLabelModule,
-    ButtonModule
+    ButtonModule,
+    EditorModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano

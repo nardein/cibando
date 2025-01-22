@@ -16,4 +16,9 @@ export class UserService {
   saveUsers(User: any){
     return this.http.post<any>(`${this.apiBaseUrl}/signup`, User);
   }
+
+  getUserDetail(email){
+    const body = {email: email};
+    return this.http.post<any>(`${this.apiBaseUrl}/users`,body)
+  }
 }

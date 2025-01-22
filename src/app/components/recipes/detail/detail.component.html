@@ -1,17 +1,22 @@
 <div *ngIf="ricetta" else noData>
   <div class="custom-container">
-    <img class="image-recipe" [src]="ricetta.image" alt="{{ricetta.title}}"/>
-    <h1>{{ricetta.title}}</h1>
-    <p>{{ricetta.description}}</p>
+    <img class="image-recipe" [src]="ricetta.image" alt="{{ ricetta.title }}" />
+    <h1>{{ ricetta.title }}</h1>
+    <p [innerHTML]="ricetta.description"></p>
     <h2>Difficoltà</h2>
-    <p><img [src]="percorsoStelline + ricetta.difficulty + '.png'"
-      class=difficolta  alt="difficoltà {{ricetta.difficulty}}"></p>
-    <h2> Ricetta pubblicata il {{ ricetta.date | date:'EEEE dd MMMM yyyy' }}</h2>
+    <p>
+      <img
+        [src]="percorsoStelline + ricetta.difficulty + '.png'"
+        class="difficolta"
+        alt="difficoltà {{ ricetta.difficulty }}"
+      />
+    </p>
+    <h2>
+      Ricetta pubblicata il {{ ricetta.date | date : "EEEE dd MMMM yyyy" }}
+    </h2>
   </div>
 </div>
 
 <ng-template #noData>
-  <div>
-    Spiacenti ricetta non disponibile
-  </div>
+  <div>Spiacenti ricetta non disponibile</div>
 </ng-template>
