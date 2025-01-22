@@ -22,6 +22,7 @@ import localeIt from '@angular/common/locales/it';  // Importa la localizzazione
 import { registerLocaleData } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { EditorModule } from 'primeng/editor';
+
 // pagine
 import { CarouselComponent } from './components/shared/carousel/carousel.component';
 import { HomeComponent } from './components/home/home.component';
