@@ -17,7 +17,14 @@
       routerLink="dettaglio/{{ recipe.title }}/{{ recipe._id }}"
       >Visualizza</a
     >
-
+    <a
+      *ngIf="authService.isLogged() && authService.isAdmin()"
+      class="btn btn-primary"><i class="pi-pencil"style="font-size: 1rem"></i></a
+    >
+    <a
+    *ngIf="authService.isLogged() && authService.isAdmin()"
+    class="btn btn-primary"><span class="pi-trash"style="font-size: 1rem"></span></a
+  >
     <a
       *ngIf="page === 'home'"
       class="btn btn-primary"

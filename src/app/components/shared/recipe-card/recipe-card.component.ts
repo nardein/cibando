@@ -2,10 +2,11 @@ import { Recipe } from './../../../models/recipes.model';
 import { RouterLink } from '@angular/router';
 import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { AuthService } from '../../../services/auth.service';
+
 @Component({
   selector: 'app-recipe-card',
   standalone: false,
-
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.scss'
 })
@@ -16,6 +17,7 @@ export class RecipeCardComponent {
   @Output() messaggio = new EventEmitter();
 
   private sanitizer = inject(DomSanitizer);
+  public authService = inject(AuthService);
 
   inviaTitolo(titolo: string) {
     this.messaggio.emit(titolo);
