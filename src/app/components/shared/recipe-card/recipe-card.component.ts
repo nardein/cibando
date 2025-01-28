@@ -1,9 +1,10 @@
 import { Recipe } from './../../../models/recipes.model';
 import { RouterLink } from '@angular/router';
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter, inject, ViewChild, ElementRef } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { AuthService } from '../../../services/auth.service';
-
+import { DialogModule } from 'primeng/dialog';
+import { RecipeService } from '../../../services/recipe.service';
 @Component({
   selector: 'app-recipe-card',
   standalone: false,
@@ -16,8 +17,12 @@ export class RecipeCardComponent {
   @Input() page: string = '';
   @Output() messaggio = new EventEmitter();
 
+  visible = false;
+
   private sanitizer = inject(DomSanitizer);
   public authService = inject(AuthService);
+  private modalService = inject(DialogModule);
+  private recipeService = inject(RecipeService);
 
   inviaTitolo(titolo: string) {
     this.messaggio.emit(titolo);
@@ -39,5 +44,12 @@ export class RecipeCardComponent {
     }
   }
 
+  openModal() {
+    this.visible = true;
+  }
+
+  cancellaRicetta() {
+    console.log('ricetta cancellata')
+  }
 
 }

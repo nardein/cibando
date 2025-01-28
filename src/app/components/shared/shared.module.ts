@@ -9,6 +9,7 @@ import { CarouselComponent } from "./carousel/carousel.component";
 import { HeaderComponent } from "./header/header.component";
 import { RecipeCardComponent } from "./recipe-card/recipe-card.component";
 import { RouterLink } from "@angular/router";
+import { DialogModule } from 'primeng/dialog';
 
 //NgBootstrap Module
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -30,7 +31,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     RatingModule,
     RouterLink,
     NgbModule,
-    NgbCollapseModule
+    NgbCollapseModule,
+    DialogModule
   ],
   exports: [RecipeCardComponent, HeaderComponent, CarouselComponent]
 })

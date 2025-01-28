@@ -17,14 +17,16 @@
       routerLink="dettaglio/{{ recipe.title }}/{{ recipe._id }}"
       >Visualizza</a
     >
+    <div class="d-inline-block float-end">
     <a
       *ngIf="authService.isLogged() && authService.isAdmin()"
-      class="btn btn-primary"><i class="pi-pencil"style="font-size: 1rem"></i></a
+      class="btn btn-primary ms-2"><i class="pi pi-pencil"style="font-size: 1rem"></i></a
     >
     <a
     *ngIf="authService.isLogged() && authService.isAdmin()"
-    class="btn btn-primary"><span class="pi-trash"style="font-size: 1rem"></span></a
-  >
+    class="btn btn-primary ms-2"><i class="pi pi-trash" (click)="openModal()"></i>
+    </a>
+  </div>
     <a
       *ngIf="page === 'home'"
       class="btn btn-primary"
@@ -32,4 +34,19 @@
       >Dettaglio</a
     >
   </div>
+</div>
+
+<!--Modale di cancellazione-->
+<div class="card flex justify-content-center">
+  <p-button (onClick)="openModal()" label="Show" />
+  <p-dialog header="Cancellazione Ricetta" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
+      <div class="flex align-items-center gap-3 mb-3">
+          <h4>Vuoi cancellare la seguente ricetta: </h4>
+          <label class="font-bold w-6rem">{{recipe.title}}</label>
+      </div>
+      <div class="flex justify-content-end gap-2">
+          <p-button label="Annulla" severity="secondary" (onClick)="visible = false" />
+          <p-button label="Elimina"  (onClick)="visible = false" (onClick)="cancellaRicetta()" />
+      </div>
+  </p-dialog>
 </div>
