@@ -1,6 +1,4 @@
-
-<app-carousel></app-carousel>
-
+<app-header></app-header>
 <div>
   <h3 [ngClass]="evindenziato ? 'testoEvidenziato': ''" (click)="onEvidenziazione()" style="cursor: pointer;">Benvenuti in Cibando</h3>
   <p [style]="{'background-color':evindenziato ? 'yellow': ''}">
@@ -27,7 +25,7 @@
 </div>
 
 
-<!--MODALE UNO-->
+<!-- modale uno
 <ng-template #modaleUno let-modal>
 	<div class="modal-header">
 		<h4 class="modal-title">Elimina Prodotto</h4>
@@ -40,7 +38,7 @@
 		<button type="button" class="btn btn-secondary" (click)="modal.dismiss()" ngbAutoFocus>Annulla</button>
     <button type="button" class="btn btn-primary" (click)="modal.close()">ELIMINA</button>
 	</div>
-</ng-template>
+</ng-template> -->
 
 <!--MODALE DUE-->
 <ng-template #modaleRegistrazione let-modal>

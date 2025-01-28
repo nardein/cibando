@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { RecipeRoutingModule } from "./recipe-routing.module";
+import { SharedModule } from "../shared/shared.module";
 
 //PrimeNg Module
 import { PaginatorModule } from 'primeng/paginator';
@@ -13,7 +14,6 @@ import { RatingModule } from "primeng/rating";
 
 //Componenti
 import { RecipesComponent } from './recipes.component';
-import { RecipeCardComponent } from '../shared/recipe-card/recipe-card.component';
 import { NuovaricettaComponent } from './nuovaricetta/nuovaricetta.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { DetailComponent } from './detail/detail.component';
@@ -22,7 +22,6 @@ import { DetailComponent } from './detail/detail.component';
 @NgModule({
   declarations: [
     RecipesComponent,
-    RecipeCardComponent,
     NuovaricettaComponent,
     RecipesListComponent,
     DetailComponent
@@ -37,9 +36,10 @@ import { DetailComponent } from './detail/detail.component';
     PaginatorModule,
     ButtonModule,
     EditorModule,
-    RatingModule
+    RatingModule,
+    SharedModule
   ],
-  exports: [RecipeCardComponent] // i componenti condivisi
+  exports: [] // i componenti condivisi
 })
 
 export class RecipesModule { }

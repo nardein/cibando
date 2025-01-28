@@ -10,6 +10,10 @@ import localeIt from '@angular/common/locales/it';  // Importa la localizzazione
 import { registerLocaleData } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+//Child Module
+import { SharedModule } from './components/shared/shared.module';
+import { RecipesModule } from './components/recipes/recipes.module';
+
 //PrimeNg Module
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
@@ -24,28 +28,23 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 //Component
-import { CarouselComponent } from './components/shared/carousel/carousel.component';
-import { HomeComponent } from './components/home/home.component';
-import { HeaderComponent } from './components/shared/header/header.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
 
-import { RecipesModule } from './components/recipes/recipes.module';
 
 registerLocaleData(localeIt, 'it');
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent,
-    HomeComponent,
-    HeaderComponent,
     RegistrationComponent,
     ContattiComponent,
     LoginComponent,
     ProfileComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +62,9 @@ registerLocaleData(localeIt, 'it');
     ButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    RecipesModule
+    RecipesModule,
+    SharedModule
+
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'it' },  // Imposta la lingua predefinita su italiano

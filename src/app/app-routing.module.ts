@@ -3,16 +3,15 @@ import { RouterModule, Routes } from '@angular/router';
 import { loggedInGuard } from './guards/logged-in.guard';
 
 //Components
-import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
 import { ContattiComponent } from './components/contatti/contatti.component';
 import { LoginComponent } from './components/user/login/login.component';
 import { ProfileComponent } from './components/user/profile/profile.component';
-import { isAdminGuard } from './guards/is-admin.guard';
+import { HomeComponent } from './components/home/home.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' }, //pathMatch controlla tutta la stringa dell'url e funziona sempre
-  { path: 'home', component: HomeComponent }, //'home' rotta del url e component da caricare
+  { path: 'home', component: HomeComponent },
   { path: 'registrazione', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'contatti', component: ContattiComponent },
