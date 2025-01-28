@@ -1,25 +1,24 @@
 <app-header></app-header>
-<div id="container-login">
+<div id="container-login" class="d-flex justify-content-center align-items-center
+  p-lg-2 rounded shadow bg-opacity-10 mt-4" style="height: 500px; width: 800px;">
   <form #form="ngForm">
-    <div>
+    <div class="d-flex justify-content-center align-items-center">
       <p-floatLabel>
         <input  pInputText id="username" ngModel name="email">
         <label for="username">Username/email</label>
       </p-floatLabel>
     </div>
 
-    <div>
-      <p-floatLabel>
-        <p-password  pInputText id="password" ngModel name="password"  [toggleMask]="true"/>
+    <div class="d-flex justify-content-center align-items-center">
+      <p-floatLabel class="mt-4">
+        <p-password  id="password" ngModel name="password"  [toggleMask]="true"/>
         <label for="password">Password</label>
       </p-floatLabel>
     </div>
 
 
-    <div>
-      <p-floatLabel>
-        <p-button  label="accedi" icon="pi pi-check" iconPos="right" (onClick)="onSubmit(form.value)"/>
-      </p-floatLabel>
+    <div class="d-flex justify-content-center align-items-center mt-3">
+        <p-button label="Accedi" [rounded]="true" icon="pi pi-check" iconPos="right" (onClick)="onSubmit(form.value)"/>
     </div>
   </form>
 

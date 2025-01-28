@@ -1,4 +1,6 @@
-#container-login{
+@import "../../../styles/colors.scss";
+
+#container-login {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -6,4 +8,5 @@
   margin: auto;
   height: 50vh;
   justify-content: center;
+  background-color: $primary-color-3;
 }

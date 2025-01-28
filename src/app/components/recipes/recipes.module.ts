@@ -39,7 +39,7 @@ import { DetailComponent } from './detail/detail.component';
     RatingModule,
     SharedModule
   ],
-  exports: [] // i componenti condivisi
+  exports: [NuovaricettaComponent] // i componenti condivisi
 })
 
 export class RecipesModule { }

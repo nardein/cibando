@@ -3,13 +3,20 @@ import { CommonModule } from "@angular/common"; //modulo con le funzioni piu usa
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { RatingModule } from "primeng/rating";
+
+//Shared Components
 import { CarouselComponent } from "./carousel/carousel.component";
 import { HeaderComponent } from "./header/header.component";
 import { RecipeCardComponent } from "./recipe-card/recipe-card.component";
 import { RouterLink } from "@angular/router";
+
+//PrimeNg Module
 import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { RatingModule } from "primeng/rating";
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { InputTextModule } from 'primeng/inputtext';
 
 //NgBootstrap Module
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -32,7 +39,10 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     RouterLink,
     NgbModule,
     NgbCollapseModule,
-    DialogModule
+    DialogModule,
+    IconFieldModule,
+    InputIconModule,
+    InputTextModule
   ],
   exports: [RecipeCardComponent, HeaderComponent, CarouselComponent]
 })

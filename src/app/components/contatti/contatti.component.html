@@ -1,17 +1,17 @@
 <app-header></app-header>
-<!-- Parent Container -->
+<!-- Parent Container --><!--
 <div class="container min-vh-100">
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-sm-12 col-md-8 col-lg-6 d-flex justify-content-center">
-
+ -->
       <!-- Background Card & Form -->
-      <div id="background" class="p-lg-2 rounded shadow bg-opacity-10 " style="height: 500px; width: 800px;">
+      <div id="background" class="p-lg-2 rounded shadow bg-opacity-10 mt-5 " style="height: 500px; width: 800px;">
         <form (ngSubmit)="onSubmit()" [formGroup]="contactForm"
           class="h-100 d-flex flex-column justify-content-center position-relative">
           <h1 id="titleCard" class="position-absolute top-0 start-0 m-3 fw-bolder text-black">Contatti</h1>
 
           <!-- Nome Field -->
-          <div class="row mb-3 align-items-center">
+          <div class="row mb-3 justify-content-center">
             <div class="col-4 text-end">
             </div>
             <div class="d-flex justify-content-center">
@@ -66,6 +66,3 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
-</div>
