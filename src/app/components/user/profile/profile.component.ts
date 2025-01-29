@@ -15,6 +15,15 @@ export class ProfileComponent {
   user = null;
   email;
 
+  constructor(){
+    if(JSON.parse(localStorage.getItem('user')) !== null) {
+      this.email = JSON.parse(localStorage.getItem('user')).email;
+    }
+    if(this.email){
+      this.getUser()
+    }
+  }
+
   getUser(){
     this.userService.getUserDetail(this.email).subscribe({
       next: (res) =>{

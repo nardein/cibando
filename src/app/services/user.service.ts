@@ -19,6 +19,6 @@ export class UserService {
 
   getUserDetail(email){
     const body = {email: email};
-    return this.http.post<any>(`${this.apiBaseUrl}/users`,body)
+    return this.http.post<any>(`${this.apiBaseUrl}/user`,body)
   }
 }
