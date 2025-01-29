@@ -1,4 +1,4 @@
-<div class="card" style="width: 18rem">
+<!-- <div class="card" style="width: 18rem">
   <div
     class="card-image"
     [ngStyle]="{ 'background-image': 'url(' + recipe.image + ')' }"
@@ -6,7 +6,6 @@
   ></div>
   <div class="card-body">
     <h5 class="card-title">{{ recipe.title }}</h5>
-    <!-- <p class="card-text">{{recipe.description | slice: 0:250}}...</p> -->
     <p class="card-text" [innerHTML]="accorciaDescrizione(recipe.description)">
       ...
     </p>
@@ -36,7 +35,7 @@
   </div>
 </div>
 
-<!--Modale di cancellazione-->
+Modale di cancellazione
 <div class="card flex justify-content-center">
   <p-button (onClick)="openModal()" label="Show" />
   <p-dialog header="Cancellazione Ricetta" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem' }">
@@ -46,7 +45,73 @@
       </div>
       <div class="flex justify-content-end gap-2">
           <p-button label="Annulla" severity="secondary" (onClick)="visible = false" />
-          <p-button label="Elimina"  (onClick)="visible = false" (onClick)="cancellaRicetta(recipe._id)"  />
+          <p-button label="Elimina"  (onClick)="visible = false" (onClick)="cancellaRicetta(recipe.)"  />
       </div>
   </p-dialog>
 </div>
+ -->
+
+<div class="card" style="width: 18rem">
+  <div class="card-image" [ngStyle]="{ 'background-image': 'url(' + recipe.image + ')' }"
+    (click)="inviaTitolo(recipe.title)"></div>
+  <div class="card-body">
+    <h5 class="card-title">{{ recipe.title }}</h5>
+    <p class="card-text" [innerHTML]="accorciaDescrizione(recipe.description)">
+      ...
+    </p>
+
+    <a *ngIf="page !== 'home'" class="btn btn-primary"
+      routerLink="dettaglio/{{ recipe.title }}/{{ recipe._id }}">Visualizza</a>
+    <div class="d-inline-block float-end">
+      <a *ngIf="authService.isLogged() && authService.isAdmin()" class="btn btn-primary ms-2">
+        <i class="pi pi-pencil" (click)="openModalEdit()" style="font-size: 1rem"></i>
+      </a>
+      <a *ngIf="authService.isLogged() && authService.isAdmin()" class="btn btn-primary ms-2">
+        <i class="pi pi-trash" (click)="openModalDel()"></i>
+      </a>
+    </div>
+    <a *ngIf="page === 'home'" class="btn btn-primary"
+      routerLink="/recipes/dettaglio/{{ recipe.title }}/{{ recipe._id }}">Dettaglio</a>
+  </div>
+</div>
+
+<!-- Modale di cancellazione -->
+<p-dialog header="Cancellazione Ricetta" [modal]="true" [(visible)]="visibleDelete" [style]="{ width: '25rem' }">
+  <div class="flex align-items-center gap-3 mb-3">
+    <h4>Vuoi cancellare la seguente ricetta:</h4>
+    <label class="font-bold w-6rem">{{ recipe.title }}</label>
+  </div>
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Annulla" severity="secondary" (onClick)="visibleDelete = false" />
+    <p-button label="Elimina" (onClick)="visibleDelete = false" (onClick)="cancellaRicetta(recipe._id)" />
+  </div>
+</p-dialog>
+
+<!--Modale di edit-->
+<p-dialog header="Modifica Ricetta" [modal]="true" [(visible)]="visibleEdit" [style]="{ width: '35rem' }"
+  [contentStyle]="{ 'display': 'flex', 'justify-content': 'center', 'align-items': 'center' }">
+  <div class="flex flex-column align-items-center justify-content-center">
+    <div class="flex align-items-center gap-3 mb-3 mt-3">
+      <h4 style="font-weight: bolder;">Link immagine:</h4>
+      <input type="url" [(ngModel)]="editRecipe.image" pInputText placeholder="{{recipe.image}}">
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <h4 style="font-weight: bolder;">Titolo:</h4>
+      <input type="text" [(ngModel)]="editRecipe.title" pInputText placeholder="{{recipe.title}}">
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <h4 style="font-weight: bolder;">Difficolta:</h4>
+      <input type="number" [(ngModel)]="editRecipe.difficulty" pInputText placeholder="{{recipe.difficulty}}">
+    </div>
+    <div class="flex align-items-center gap-3 mb-3">
+      <h4 style="font-weight: bolder;">Descrizione:</h4>
+      <textarea rows="5" cols="30" [(ngModel)]="editRecipe.description" pInputTextarea
+        placeholder="{{recipe.description}}">
+    </textarea>
+    </div>
+    <div class="flex justify-content-end gap-2">
+      <p-button label="Annulla" severity="secondary" (onClick)="visibleEdit = false" />
+      <p-button label="Aggiorna" (onClick)="visibleEdit = false" (onClick)="updateRicetta()" />
+    </div>
+  </div>
+</p-dialog>

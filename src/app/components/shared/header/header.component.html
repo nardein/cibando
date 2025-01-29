@@ -48,21 +48,26 @@
         <li
           class="nav-item"
           *ngIf="authService.isLogged() && authService.isAdmin()">
-          <a class="nav-link">
+          <a class="nav-link" routerLink="/nuovaricetta">
             <i
               class="pi pi-envelope"
               style="font-size: 1rem"
-              routerLink="/nuovaricetta"></i>
+            ></i>
             Nuova Ricetta
           </a>
         </li>
+        <li >
+          <p-iconField iconPosition="left">
+            <p-inputIcon styleClass="pi pi-search" />
+            <input type="text" pInputText placeholder="Search" />
+        </p-iconField>
+      </li>
         <li class="nav-item" *ngIf="!authService.isLogged()">
           <a class="nav-link">
             <i
               class="pi pi-user"
-              style="font-size: 1rem"
+              style="font-size: 2rem"
               routerLink="/login"></i>
-            Accedi/Registrati
           </a>
         </li>
         <li class="nav-item" *ngIf="authService.isLogged()">
@@ -73,12 +78,6 @@
           <a routerLink="profilo">PROFILO</a>
           <strong (click)="logout()">ESCI</strong>
         </li>
-        <li>
-        <p-iconField iconPosition="left">
-          <p-inputIcon styleClass="pi pi-search" />
-          <input type="text" pInputText placeholder="Search" />
-      </p-iconField>
-    </li>
       </ul>
     </div>
   </nav>
