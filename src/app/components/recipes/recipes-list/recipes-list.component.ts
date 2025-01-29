@@ -31,7 +31,7 @@ export class RecipesListComponent {
   ]).pipe(
     map(([ricette, searchTerm]) =>
       ricette
-        .filter(ricetta => ricetta.difficulty < 3) // 🔹 Filtra per difficoltà
+        .filter(ricetta => ricetta.difficulty < 6) // 🔹 Filtra per difficoltà
         .filter(ricetta => ricetta.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       ricetta.description.toLowerCase().includes(searchTerm.toLowerCase())) // 🔹 Filtra per titolo
     ),
@@ -43,7 +43,7 @@ export class RecipesListComponent {
   }
 
 
-  totaleRicette: Recipe[]  // --BestPractice-- $ usato per dire che la variabile è per una chiamata asincrona
+  totaleRicette: Recipe[] = []  // --BestPractice-- $ usato per dire che la variabile è per una chiamata asincrona
 
 
   constructor(){

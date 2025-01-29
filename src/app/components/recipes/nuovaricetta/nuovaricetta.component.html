@@ -1,17 +1,11 @@
+<app-header />
 <!-- Parent Container -->
 <div class="container min-vh-100">
   <div class="row justify-content-center align-items-center min-vh-100">
     <div class="col-sm-12 col-md-8 col-lg-6 d-flex justify-content-center">
       <!-- Background Card & Form -->
-      <div
-        id="background"
-        class="p-lg-2 rounded shadow bg-opacity-10"
-        style="height: 500px; width: 800px"
-      >
-        <form
-          [formGroup]="form"
-          class="h-100 d-flex flex-column justify-content-center position-relative"
-        >
+      <div id="background" class="p-lg-2 rounded shadow bg-opacity-10" style="height: 500px; width: 800px">
+        <form [formGroup]="form" class="h-100 d-flex flex-column justify-content-center position-relative">
           <h1 class="position-absolute top-0 start-0 m-3 fw-bolder text-black">
             Nuova ricetta
           </h1>
@@ -21,14 +15,7 @@
             <div class="col-4 text-end"></div>
             <div class="d-flex justify-content-center">
               <div class="col-6">
-                <input
-                  type="text"
-                  pInputText
-                  name="title"
-                  id="title"
-                  formControlName="title"
-                  placeholder="Titolo"
-                />
+                <input type="text" pInputText name="title" id="title" formControlName="title" placeholder="Titolo" />
               </div>
             </div>
           </div>
@@ -38,14 +25,8 @@
             <div class="col-4 text-end"></div>
             <div class="d-flex justify-content-center">
               <div class="col-6">
-                <input
-                  type="url"
-                  pInputText
-                  name="description"
-                  id="description"
-                  formControlName="image"
-                  placeholder="image"
-                />
+                <input type="url" pInputText name="description" id="description" formControlName="image"
+                  placeholder="image" />
               </div>
             </div>
           </div>
@@ -55,10 +36,7 @@
             <div class="col-4 text-end"></div>
             <div class="d-flex justify-content-center">
               <div class="col-6">
-                <p-editor
-                  formControlName="description"
-                  [style]="{ height: '320px' }"
-                />
+                <p-editor formControlName="description" [style]="{ height: '320px' }" />
               </div>
             </div>
           </div>
@@ -76,12 +54,7 @@
           <!-- Submit Button -->
           <div class="row">
             <div class="col text-center">
-              <button
-                [disabled]="!form.valid"
-                type="submit"
-                class="btn btn-primary btn-lg"
-                (click)="onSubmit()"
-              >
+              <button [disabled]="!form.valid" type="submit" class="btn btn-primary btn-lg" (click)="onSubmit()">
                 Inserisci
               </button>
             </div>
