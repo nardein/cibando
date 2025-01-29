@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RecipeService } from '../../../services/recipe.service';
 import { Recipe } from '../../../models/recipes.model';
-import { map, Observable } from 'rxjs';
+import { map, Observable, take, filter, first, BehaviorSubject, combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-recipes-list',
@@ -12,19 +12,37 @@ import { map, Observable } from 'rxjs';
 })
 
 export class RecipesListComponent {
-  recipeService = inject(RecipeService);
-  ricette: Recipe[] = [];
-  titoloRicevuto: any;
 
+  recipeService = inject(RecipeService);
+
+  ricette: Recipe[] = [];
+
+  titoloRicevuto: any;
   first: number = 0;
   rows: number = 10;
   page = 1;
   size = 4;
 
-  recipes$ = this.recipeService.getRecipes().pipe(
-    map(res => res.filter(ricetteFiltrate => ricetteFiltrate.difficulty < 3)), //il map prende la response e la trasforma "mappa" in quello che chiedo. In questo caso la filtra pure
+  searchRecipe$ = new BehaviorSubject<string>('');
+
+  recipes$ = combineLatest([
+    this.recipeService.getRecipes(),
+    this.searchRecipe$
+  ]).pipe(
+    map(([ricette, searchTerm]) =>
+      ricette
+        .filter(ricetta => ricetta.difficulty < 3) // 🔹 Filtra per difficoltà
+        .filter(ricetta => ricetta.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      ricetta.description.toLowerCase().includes(searchTerm.toLowerCase())) // 🔹 Filtra per titolo
+    ),
     map(response => this.totaleRicette = response)
-  )
+  );
+
+  filtraRicette(query: string) {
+    this.searchRecipe$.next(query); // 🔹 Aggiorna il valore della ricerca
+  }
+
+
   totaleRicette: Recipe[]  // --BestPractice-- $ usato per dire che la variabile è per una chiamata asincrona
 
 
@@ -32,18 +50,15 @@ export class RecipesListComponent {
   //  this.getRecipes();
   }
 
-
   getRecipes(){
-    this.recipeService.getRecipes().subscribe({
-      next:(res) => {    //se la risposta è positiva fai questo
-        this.ricette = res;
+    this.recipeService.getRecipes().pipe(first()).subscribe({
+      next: (res) => {
+        console.log(res); // Controlla il formato delle date qui
+        this.ricette = res.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+        // this.ricette = res.sort((a, b) => b.createdAt - a.createdAt);
       },
-      error: (e)  => console.error(e)
-    });
-  }
-
-  riceviTitolo(event: any){
-    this.titoloRicevuto=event;
+      error: (e) => console.error(e)
+    })
   }
 
   onPageChange(event) {
@@ -51,4 +66,10 @@ export class RecipesListComponent {
     this.page = event.page;
     this.size = event.rows;
   }
+
+  riceviTitolo(event: any){
+    this.titoloRicevuto=event;
+  }
+
+
 }

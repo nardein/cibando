@@ -35,4 +35,8 @@ export class RecipeService {
   deleteRecipes(id: string): Observable<Recipe | undefined> {
     return this.http.delete<Recipe>(`${this.apiBaseUrl}/${id}`)
   }
+
+  updateRecipes(id:string, updatedRecipe: Recipe): Observable<Recipe | undefined> {
+    return this.http.put<Recipe>(`${this.apiBaseUrl}/${id}`, updatedRecipe)
+  }
 }

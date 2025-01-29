@@ -17,6 +17,7 @@ import { RatingModule } from "primeng/rating";
 import { IconFieldModule } from 'primeng/iconfield';
 import { InputIconModule } from 'primeng/inputicon';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from "primeng/inputtextarea";
 
 //NgBootstrap Module
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -42,7 +43,8 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
     DialogModule,
     IconFieldModule,
     InputIconModule,
-    InputTextModule
+    InputTextModule,
+    InputTextareaModule
   ],
   exports: [RecipeCardComponent, HeaderComponent, CarouselComponent]
 })

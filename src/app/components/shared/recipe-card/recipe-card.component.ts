@@ -17,7 +17,10 @@ export class RecipeCardComponent {
   @Input() page: string = '';
   @Output() messaggio = new EventEmitter();
 
-  visible = false;
+  visibleDelete = false;
+  visibleEdit = false;
+
+  editRecipe: Recipe = {} as Recipe;
 
   private sanitizer = inject(DomSanitizer);
   public authService = inject(AuthService);
@@ -44,16 +47,33 @@ export class RecipeCardComponent {
     }
   }
 
-  openModal() {
-    this.visible = true;
+  openModalDel() {
+    this.visibleDelete = true;
+  }
+
+  openModalEdit() {
+    this.visibleEdit = true;
   }
 
   cancellaRicetta(id: string) {
     this.recipeService.deleteRecipes(id).subscribe({
       next: (res) => {
         console.log('ricetta cancellata');
-        this.visible = false;
+        this.visibleDelete = false;
       }
     })
+  }
+
+
+   updateRicetta() {
+    this.recipeService.updateRecipes(this.editRecipe._id, this.editRecipe).subscribe({
+      next: (res) => {
+        this.visibleEdit = false;
+      },
+      error: (e) => {
+        console.error('Errore durante update', e);
+      }
+    })
+
   }
 }
